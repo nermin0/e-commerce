@@ -30,7 +30,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
 
-                {/* Main layout with Header + Footer */}
+                {/* Main layout with Header + Footerr */}
                 <Route element={<Layout />}>
                   <Route path="/" element={<Home />} />
                   <Route path="/products" element={<Products />} />
