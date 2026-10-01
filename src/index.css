@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream: #f5f0e8;
+  --cream-dark: #ede8de;
+  --tan: #d4c5a9;
+  --tan-light: #e8dfd0;
+  --forest: #2c3e2d;
+  --forest-dark: #1e2d1f;
+  --forest-light: #3d5c3e;
+  --brown: #8b6914;
+  --brown-light: #a07820;
+  --text-dark: #1a1a1a;
+  --text-mid: #4a4a4a;
+  --text-light: #7a7a7a;
+  --text-muted: #9a9a9a;
+  --border: #ddd8ce;
+  --white: #ffffff;
+  --red: #c0392b;
+  --red-light: #e74c3c;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+body {
+  margin: 0;
+  font-family: "Georgia", "Times New Roman", serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+  border: none;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Georgia", serif;
+  color: var(--text-dark);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}

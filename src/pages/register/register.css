@@ -1,0 +1,226 @@
+.register-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  background-color: var(--cream);
+}
+
+.register-left {
+  position: relative;
+  overflow: hidden;
+}
+
+.register-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.register-quote {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  background-color: var(--forest-dark);
+  color: white;
+  font-family: 'Georgia', serif;
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.5;
+  padding: 28px 32px;
+  border-radius: 2px;
+}
+
+.register-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cream);
+  padding: 60px 40px;
+}
+
+.register-form-wrap {
+  width: 100%;
+  max-width: 400px;
+}
+
+.register-brand {
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--brown);
+  display: inline-block;
+  margin-bottom: 32px;
+}
+
+.register-eyebrow {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--brown);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.register-title {
+  font-family: 'Georgia', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.register-subtitle {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+/* Shared form styles (duplicated from login.css for isolation) */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-mid);
+}
+
+.form-input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 13px 16px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--text-dark);
+  background-color: white;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-input:focus {
+  border-color: var(--forest);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.pass-wrap {
+  position: relative;
+}
+
+.pass-wrap .form-input {
+  padding-right: 44px;
+}
+
+.pass-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  transition: color 0.15s;
+}
+
+.pass-toggle:hover {
+  color: var(--text-dark);
+}
+
+.form-error {
+  background-color: #fde8e8;
+  border: 1px solid #f5c6c6;
+  color: var(--red);
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  font-family: system-ui, sans-serif;
+}
+
+.register-submit-btn {
+  width: 100%;
+  background-color: var(--forest);
+  color: white;
+  border: none;
+  padding: 15px;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 4px;
+}
+
+.register-submit-btn:hover {
+  background-color: var(--forest-dark);
+}
+
+.register-login-link {
+  font-size: 14px;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.link-accent {
+  color: var(--forest);
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+
+.link-accent:hover {
+  color: var(--forest-dark);
+}
+
+.register-back {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.register-back:hover {
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  .register-page {
+    grid-template-columns: 1fr;
+  }
+
+  .register-left {
+    height: 280px;
+  }
+
+  .register-right {
+    padding: 40px 24px;
+  }
+}

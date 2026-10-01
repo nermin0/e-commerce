@@ -1,0 +1,494 @@
+.checkout-page {
+  background-color: var(--cream);
+  min-height: 80vh;
+  padding-bottom: 80px;
+}
+
+.co-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 32px;
+}
+
+/* ── Progress steps ── */
+.co-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 48px;
+}
+
+.co-step-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.co-step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: white;
+  color: var(--text-muted);
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.co-step-circle.active {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: white;
+}
+
+.co-step-circle.done {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: white;
+}
+
+.co-step-label {
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.co-step-label.active {
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.co-step-line {
+  width: 60px;
+  height: 2px;
+  background: var(--border);
+  margin: 0 12px;
+  transition: background 0.2s;
+}
+
+.co-step-line.done {
+  background: var(--forest);
+}
+
+/* ── Layout ── */
+.co-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── Form card ── */
+.co-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 32px;
+}
+
+.co-card-title {
+  font-family: 'Georgia', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 28px;
+}
+
+.co-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── Shared form styles ── */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-label {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-mid);
+}
+
+.form-input {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 12px 14px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--text-dark);
+  background: white;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-input:focus {
+  border-color: var(--forest);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.input-error { border-color: var(--red-light); }
+.field-error {
+  font-size: 12px;
+  color: var(--red);
+  font-family: system-ui, sans-serif;
+}
+
+.co-optional {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+/* ── Payment methods ── */
+.co-pay-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.co-pay-method {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  background: white;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.co-pay-method:hover {
+  border-color: var(--forest);
+  color: var(--text-dark);
+}
+
+.co-pay-method.selected {
+  border-color: var(--forest);
+  background: rgba(44, 62, 45, 0.05);
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.co-card-form {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.co-card-input { letter-spacing: 0.12em; }
+
+.co-cash-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(44, 62, 45, 0.06);
+  border: 1px solid rgba(44, 62, 45, 0.2);
+  border-radius: 4px;
+  padding: 16px;
+  font-size: 14px;
+  color: var(--forest);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+/* ── Review sections ── */
+.co-review-section {
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.co-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.co-review-label {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.co-edit-btn {
+  background: none;
+  border: none;
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  color: var(--forest);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.co-review-value {
+  font-size: 14px;
+  color: var(--text-mid);
+  margin-bottom: 3px;
+  font-family: 'Georgia', serif;
+}
+
+.co-review-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+}
+
+.co-review-item:first-of-type { border-top: none; }
+
+.co-review-img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.co-review-item-info { flex: 1; }
+
+.co-review-item-name {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+.co-review-item-qty {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: system-ui, sans-serif;
+}
+
+.co-review-item-price {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* ── Actions ── */
+.co-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  gap: 12px;
+}
+
+.co-back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-mid);
+  padding: 11px 20px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.15s;
+}
+
+.co-back-btn:hover {
+  border-color: var(--text-dark);
+  color: var(--text-dark);
+}
+
+.co-next-btn {
+  background-color: var(--forest);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.co-next-btn:hover { background-color: var(--forest-dark); }
+
+.co-place-btn {
+  background-color: var(--brown);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.co-place-btn:hover { background-color: var(--brown-light); }
+
+/* ── Order summary sidebar ── */
+.co-summary {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 24px;
+  position: sticky;
+  top: 80px;
+}
+
+.co-summary-title {
+  font-family: 'Georgia', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+
+.co-summary-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.co-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.co-summary-name {
+  font-size: 13px;
+  color: var(--text-light);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.co-summary-price {
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  color: var(--text-dark);
+  flex-shrink: 0;
+}
+
+.co-summary-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+.co-summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* ── Success screen ── */
+.co-success {
+  text-align: center;
+  padding: 80px 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.co-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--forest);
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.co-success-title {
+  font-family: 'Georgia', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.co-order-number {
+  display: inline-block;
+  background-color: rgba(44, 62, 45, 0.08);
+  border: 1px solid rgba(44, 62, 45, 0.2);
+  color: var(--forest);
+  font-family: system-ui, monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 8px 20px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.co-success-sub {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+.co-home-btn {
+  display: inline-block;
+  margin-top: 32px;
+  background-color: var(--forest);
+  color: white;
+  padding: 13px 32px;
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.co-home-btn:hover { background-color: var(--forest-dark); color: white; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .co-container { padding: 32px 20px; }
+  .co-layout { grid-template-columns: 1fr; }
+  .co-summary { position: static; }
+  .co-row { grid-template-columns: 1fr; }
+  .co-pay-methods { grid-template-columns: 1fr; }
+  .co-steps { gap: 4px; }
+  .co-step-line { width: 32px; margin: 0 6px; }
+  .co-step-label { display: none; }
+}

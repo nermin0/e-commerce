@@ -1,0 +1,377 @@
+.product-detail-page {
+  background-color: var(--cream);
+  min-height: 70vh;
+  padding-bottom: 80px;
+}
+
+.pd-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 32px;
+}
+
+.pd-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.pd-bread-link {
+  font-size: 13px;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.pd-bread-link:hover {
+  color: var(--text-dark);
+}
+
+.pd-bread-sep {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.pd-bread-current {
+  font-size: 13px;
+  color: var(--text-dark);
+}
+
+.pd-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+
+.pd-image-wrap {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.pd-image {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
+.pd-info {
+  padding-top: 8px;
+}
+
+.pd-category {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--brown);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.pd-name {
+  font-family: 'Georgia', serif;
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin: 0 0 16px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.pd-price {
+  font-family: 'Georgia', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+}
+
+.pd-desc {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+}
+
+.pd-stock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.pd-stock-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #5a9e6f;
+}
+
+.pd-stock-text {
+  font-size: 13px;
+  color: var(--text-light);
+  font-family: system-ui, sans-serif;
+}
+
+.pd-label {
+  display: block;
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-mid);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.pd-qty-row {
+  margin-bottom: 24px;
+}
+
+.pd-qty-controls {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.qty-btn {
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s;
+}
+
+.qty-btn:hover {
+  background-color: var(--cream-dark);
+}
+
+.qty-value {
+  width: 48px;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  color: var(--text-dark);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pd-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.pd-add-btn {
+  flex: 1;
+  background-color: var(--forest);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 160px;
+}
+
+.pd-add-btn:hover {
+  background-color: var(--forest-dark);
+}
+
+.pd-added {
+  background-color: #5a9e6f;
+}
+
+.pd-back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-mid);
+  padding: 14px 20px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.pd-back-btn:hover {
+  border-color: var(--text-dark);
+  color: var(--text-dark);
+}
+
+.pd-details-list {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.pd-detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pd-detail-key {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.pd-detail-val {
+  font-size: 13px;
+  color: var(--text-dark);
+  font-family: 'Georgia', serif;
+}
+
+/* Not found */
+.pd-not-found {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.pd-not-found p {
+  color: var(--text-light);
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.pd-back-link {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--forest);
+  text-decoration: underline;
+}
+
+/* Related */
+.pd-related {
+  border-top: 1px solid var(--border);
+  padding-top: 48px;
+}
+
+.pd-related-title {
+  font-family: 'Georgia', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+}
+
+.pd-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.pd-related-card {
+  text-decoration: none;
+}
+
+.pd-related-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  transition: transform 0.3s;
+  display: block;
+}
+
+.pd-related-card:hover .pd-related-img {
+  transform: scale(1.02);
+}
+
+.pd-related-name {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.pd-related-price {
+  font-size: 13px;
+  color: var(--text-mid);
+  font-family: system-ui, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .pd-container {
+    padding: 32px 20px;
+  }
+
+  .pd-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .pd-image {
+    height: 320px;
+  }
+
+  .pd-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pd-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 100px 20px;
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--border);
+  border-top-color: var(--forest);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.pd-stock-out {
+  background-color: var(--red-light) !important;
+}
+
+.pd-stock-low {
+  background-color: #e67e22 !important;
+}
+
+.pd-qty-max {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: system-ui, sans-serif;
+  margin-left: 10px;
+}
+
+.qty-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}

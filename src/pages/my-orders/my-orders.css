@@ -1,0 +1,278 @@
+.mo-page {
+  background-color: var(--cream);
+  min-height: 70vh;
+  padding-bottom: 80px;
+}
+
+.mo-container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 56px 32px;
+}
+
+/* ── Page header ── */
+.mo-eyebrow {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--brown);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.mo-title {
+  font-family: 'Georgia', serif;
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin: 0 0 40px;
+  letter-spacing: -0.01em;
+}
+
+/* ── Tabs ── */
+.mo-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.mo-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 12px 20px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--text-light);
+  cursor: pointer;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.mo-tab:hover {
+  color: var(--text-dark);
+}
+
+.mo-tab.active {
+  color: var(--forest);
+  border-bottom-color: var(--forest);
+  font-weight: 600;
+}
+
+.mo-tab-icon {
+  font-size: 15px;
+}
+
+.mo-tab-count {
+  background-color: var(--forest);
+  color: white;
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* ── Order card ── */
+.mo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mo-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mo-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background-color: rgba(0,0,0,0.015);
+}
+
+.mo-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mo-order-num {
+  font-family: system-ui, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 0.05em;
+}
+
+.mo-order-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: system-ui, sans-serif;
+}
+
+/* ── Status badge ── */
+.mo-badge {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.badge-blue {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+.badge-green {
+  background-color: rgba(22, 163, 74, 0.1);
+  color: #16a34a;
+}
+
+.badge-red {
+  background-color: rgba(220, 38, 38, 0.1);
+  color: #dc2626;
+}
+
+/* ── Items ── */
+.mo-items {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mo-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mo-item-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.mo-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mo-item-name {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-bottom: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mo-item-qty {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: system-ui, sans-serif;
+}
+
+.mo-item-price {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  flex-shrink: 0;
+}
+
+/* ── Card footer ── */
+.mo-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  background-color: rgba(0,0,0,0.015);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mo-delivery-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-light);
+  font-family: system-ui, sans-serif;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mo-total {
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--text-mid);
+  flex-shrink: 0;
+}
+
+.mo-total strong {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  color: var(--text-dark);
+}
+
+/* ── Empty state ── */
+.mo-empty {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.mo-empty-icon {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.mo-empty-text {
+  font-size: 15px;
+  color: var(--text-light);
+  margin-bottom: 16px;
+  font-family: 'Georgia', serif;
+}
+
+.mo-shop-link {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--forest);
+  text-decoration: underline;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .mo-container { padding: 40px 20px; }
+  .mo-title { font-size: 30px; }
+  .mo-tab { padding: 10px 14px; font-size: 13px; }
+  .mo-card-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+}

@@ -1,0 +1,407 @@
+.my-products-page {
+  background-color: var(--cream);
+  min-height: 70vh;
+  padding-bottom: 80px;
+}
+
+.mp-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 32px;
+}
+
+/* ── Page header ── */
+.mp-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.mp-eyebrow {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--brown);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.mp-title {
+  font-family: 'Georgia', serif;
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.mp-subtitle {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.mp-add-btn {
+  background-color: var(--forest);
+  color: white;
+  padding: 12px 22px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  border-radius: 2px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.mp-add-btn:hover {
+  background-color: var(--forest-dark);
+  color: white;
+}
+
+/* ── Empty state ── */
+.mp-empty {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.mp-empty-icon {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.mp-empty-text {
+  font-size: 15px;
+  color: var(--text-light);
+  margin-bottom: 16px;
+  font-family: 'Georgia', serif;
+}
+
+.mp-empty-link {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--forest);
+  text-decoration: underline;
+}
+
+/* ── Product grid ── */
+.mp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+/* ── Product card ── */
+.mp-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.mp-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.mp-card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.mp-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.mp-card:hover .mp-card-img {
+  transform: scale(1.04);
+}
+
+/* Action overlay on hover */
+.mp-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.mp-card:hover .mp-card-overlay {
+  opacity: 1;
+}
+
+.mp-overlay-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.mp-edit-btn {
+  background-color: white;
+  color: var(--text-dark);
+}
+
+.mp-edit-btn:hover {
+  background-color: var(--forest);
+  color: white;
+}
+
+.mp-del-btn {
+  background-color: rgba(255,255,255,0.15);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.5) !important;
+}
+
+.mp-del-btn:hover {
+  background-color: var(--red);
+  border-color: var(--red) !important;
+}
+
+/* Card body */
+.mp-card-body {
+  padding: 16px;
+}
+
+.mp-card-cat {
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--brown);
+  margin-bottom: 4px;
+}
+
+.mp-card-name {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mp-card-price {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  color: var(--forest);
+  font-weight: 600;
+}
+
+/* ── Modals (shared) ── */
+.mp-overlay-bg {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.mp-modal {
+  background: white;
+  border-radius: 4px;
+  padding: 32px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.mp-modal-sm {
+  max-width: 400px;
+}
+
+.mp-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.mp-modal-title {
+  font-family: 'Georgia', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin: 0 0 10px;
+}
+
+.mp-modal-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.15s;
+}
+
+.mp-modal-close:hover { color: var(--text-dark); }
+
+.mp-modal-body {
+  margin-bottom: 4px;
+}
+
+.mp-edit-preview {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.mp-edit-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}
+
+.mp-edit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.mp-modal-text {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.mp-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.mp-modal-cancel {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-mid);
+  padding: 10px 22px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.mp-modal-cancel:hover {
+  border-color: var(--text-dark);
+  color: var(--text-dark);
+}
+
+.mp-modal-save {
+  background-color: var(--forest);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.mp-modal-save:hover { background-color: var(--forest-dark); }
+
+.mp-modal-confirm {
+  background-color: var(--red);
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.mp-modal-confirm:hover { background-color: var(--red-light); }
+
+.mp-delete-error {
+  font-size: 13px;
+  color: var(--red);
+  font-family: system-ui, sans-serif;
+  margin-bottom: 8px;
+}
+
+/* ── Shared form styles (reuse from checkout) ── */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-label {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-mid);
+}
+
+.form-input {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 11px 13px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: var(--text-dark);
+  background: white;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-input:focus { border-color: var(--forest); }
+.form-input::placeholder { color: var(--text-muted); font-style: italic; }
+.input-error { border-color: var(--red-light); }
+
+.form-textarea { resize: vertical; min-height: 80px; }
+
+.form-select { cursor: pointer; }
+
+.field-error {
+  font-size: 12px;
+  color: var(--red);
+  font-family: system-ui, sans-serif;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .mp-container { padding: 40px 20px; }
+  .mp-header { flex-direction: column; }
+  .mp-title { font-size: 30px; }
+  .mp-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+  .mp-edit-row { grid-template-columns: 1fr; }
+  .mp-card-overlay { opacity: 1; }
+}
