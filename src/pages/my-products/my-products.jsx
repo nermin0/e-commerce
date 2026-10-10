@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { apiFetch, authHeaders } from '../../lib/api'
 import { useMyProducts } from '../../context/ProductsContext'
@@ -7,7 +7,7 @@ import './my-products.css'
 const CATEGORIES = ['Living Room', 'Bedroom', 'Dining', 'Lighting', 'Storage', 'Outdoor']
 
 export default function MyProducts() {
-  const { myProducts, removeMyProduct, updateMyProduct } = useMyProducts()
+  const { myProducts, loading, error, fetchMyProducts, removeMyProduct, updateMyProduct } = useMyProducts()
 
   // ── Delete state ─────────────────────────────────────────
   const [confirmId, setConfirmId] = useState(null)
@@ -15,11 +15,14 @@ export default function MyProducts() {
   const [deleteError, setDeleteError] = useState('')
 
   // ── Edit state ───────────────────────────────────────────
-  const [editProduct, setEditProduct] = useState(null) // product being edited
+  const [editProduct, setEditProduct] = useState(null)
   const [editForm, setEditForm] = useState({})
   const [editErrors, setEditErrors] = useState({})
   const [saving, setSaving] = useState(false)
   const [saveError, setSaveError] = useState('')
+
+  // Fetch on mount
+  useEffect(() => { fetchMyProducts() }, [fetchMyProducts])
 
   // ── Open edit modal ──────────────────────────────────────
   const openEdit = (product) => {
@@ -62,8 +65,12 @@ export default function MyProducts() {
         method: 'PUT',
         headers: { ...authHeaders() },
         body: fd,
-      }).catch(() => { /* silently ignore API errors — still update locally */ })
+      })
 
+      await fetchMyProducts()
+      setEditProduct(null)
+    } catch (err) {
+      // Update locally if API fails
       updateMyProduct(editProduct.id, {
         name: editForm.name.trim(),
         price: Number(editForm.price),
@@ -71,8 +78,6 @@ export default function MyProducts() {
         description: editForm.description.trim(),
       })
       setEditProduct(null)
-    } catch (err) {
-      setSaveError(err.message || 'Failed to save changes.')
     } finally {
       setSaving(false)
     }
@@ -87,9 +92,9 @@ export default function MyProducts() {
       await apiFetch(`/api/Product/${confirmId}`, {
         method: 'DELETE',
         headers: { ...authHeaders() },
-      }).catch(() => { /* silently ignore API errors — still remove locally */ })
+      })
 
-      removeMyProduct(confirmId)
+      await fetchMyProducts()
       setConfirmId(null)
     } catch (err) {
       setDeleteError(err.message || 'Failed to delete product.')
@@ -115,6 +120,22 @@ export default function MyProducts() {
             + Add product
           </Link>
         </div>
+
+        {/* ── Loading ── */}
+        {loading && (
+          <div className="mp-loading">
+            <div className="loading-spinner" />
+            <p>Loading your products…</p>
+          </div>
+        )}
+
+        {/* ── Error ── */}
+        {error && !loading && (
+          <div className="mp-error">
+            <p>{error}</p>
+            <button className="btn-primary-sm" onClick={fetchMyProducts}>Try again</button>
+          </div>
+        )}
 
         {/* ── Empty state ── */}
         {myProducts.length === 0 && (

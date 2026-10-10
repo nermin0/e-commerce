@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { apiFetch, authHeaders, resolveImage } from '../../lib/api'
+import { apiFetch, authHeaders } from '../../lib/api'
 import { useMyProducts } from '../../context/ProductsContext'
 import './add-product.css'
 
@@ -9,7 +9,7 @@ const CATEGORIES = ['Living Room', 'Bedroom', 'Dining', 'Lighting', 'Storage', '
 export default function AddProduct() {
   const navigate = useNavigate()
   const fileInputRef = useRef(null)
-  const { addMyProduct } = useMyProducts()
+  const { fetchMyProducts } = useMyProducts()
 
   const [form, setForm] = useState({
     name: '',
@@ -71,20 +71,14 @@ export default function AddProduct() {
         fd.append('img', form.image)
       }
 
-      const result = await apiFetch('/api/Product', {
+      await apiFetch('/api/Product', {
         method: 'POST',
-        headers: { ...authHeaders() }, // NO Content-Type — browser sets multipart boundary
+        headers: { ...authHeaders() },
         body: fd,
       })
 
-      // Save locally so My Products shows it immediately
-      addMyProduct({
-        id: result?.id ?? result?.data?.id ?? Date.now(),
-        name: form.name.trim(),
-        price: Number(form.price),
-        category: form.category,
-        image: form.imagePreview || resolveImage(result?.img ?? result?.data?.img) || null,
-      })
+      // Refresh products list from API
+      await fetchMyProducts()
 
       setSubmitted(true)
       setTimeout(() => navigate('/my-products'), 1600)
