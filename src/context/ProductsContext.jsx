@@ -3,6 +3,15 @@ import { apiFetch, authHeaders, resolveImage } from '../lib/api'
 
 const ProductsContext = createContext(null)
 
+const MY_IDS_KEY = 'myProductIds'
+
+function loadMyIds() {
+  try { return JSON.parse(localStorage.getItem(MY_IDS_KEY) || '[]') } catch { return [] }
+}
+function saveMyIds(ids) {
+  try { localStorage.setItem(MY_IDS_KEY, JSON.stringify(ids)) } catch { }
+}
+
 const norm = (p) => ({
   id: p.id,
   name: p.name ?? '',
@@ -17,41 +26,20 @@ export function ProductsProvider({ children }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  /** Fetch the current user's products from the API */
   const fetchMyProducts = useCallback(async () => {
     setLoading(true)
     setError('')
     try {
-      const token = localStorage.getItem('token')
-      if (!token) { setMyProducts([]); return }
+      if (!localStorage.getItem('token')) { setMyProducts([]); return }
 
-      const data = await apiFetch('/api/Product', {
-        headers: { ...authHeaders() },
-      })
+      const data = await apiFetch('/api/Product', { headers: { ...authHeaders() } })
       const all = Array.isArray(data) ? data : data?.data ?? []
 
-      // Get current user id from JWT
-      let currentUserId = null
-      try {
-        const payload = JSON.parse(atob(token.split('.')[1]))
-        currentUserId =
-          payload.sub ||
-          payload.nameid ||
-          payload.userId ||
-          payload.UserId ||
-          payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'] ||
-          null
-      } catch { /* ignore */ }
-
-      const mine = currentUserId
-        ? all.filter(p => {
-          const uid =
-            p.appUserId ?? p.AppUserId ??
-            p.userId ?? p.UserId ??
-            p.ownerId ?? p.OwnerId ?? null
-          return String(uid) === String(currentUserId)
-        })
-        : all
+      // Filter by IDs the user added this session
+      const myIds = loadMyIds()
+      const mine = myIds.length > 0
+        ? all.filter(p => myIds.includes(p.id))
+        : []
 
       setMyProducts(mine.map(norm))
     } catch (err) {
@@ -61,26 +49,31 @@ export function ProductsProvider({ children }) {
     }
   }, [])
 
-  /** Called from my-products after a successful DELETE */
+  /** Called after successful POST — saves the new ID */
+  const registerMyProduct = (id) => {
+    const ids = loadMyIds()
+    if (!ids.includes(id)) {
+      const updated = [id, ...ids]
+      saveMyIds(updated)
+    }
+  }
+
+  /** Called after successful DELETE */
   const removeMyProduct = (id) => {
+    const ids = loadMyIds().filter(i => i !== id)
+    saveMyIds(ids)
     setMyProducts(prev => prev.filter(p => p.id !== id))
   }
 
-  /** Called from edit modal to update product fields locally */
+  /** Local optimistic update */
   const updateMyProduct = (id, fields) => {
-    setMyProducts(prev =>
-      prev.map(p => (p.id === id ? { ...p, ...fields } : p))
-    )
+    setMyProducts(prev => prev.map(p => (p.id === id ? { ...p, ...fields } : p)))
   }
 
   return (
     <ProductsContext.Provider value={{
-      myProducts,
-      loading,
-      error,
-      fetchMyProducts,
-      removeMyProduct,
-      updateMyProduct,
+      myProducts, loading, error,
+      fetchMyProducts, registerMyProduct, removeMyProduct, updateMyProduct,
     }}>
       {children}
     </ProductsContext.Provider>

@@ -9,7 +9,7 @@ const CATEGORIES = ['Living Room', 'Bedroom', 'Dining', 'Lighting', 'Storage', '
 export default function AddProduct() {
   const navigate = useNavigate()
   const fileInputRef = useRef(null)
-  const { fetchMyProducts } = useMyProducts()
+  const { fetchMyProducts, registerMyProduct } = useMyProducts()
 
   const [form, setForm] = useState({
     name: '',
@@ -71,11 +71,15 @@ export default function AddProduct() {
         fd.append('img', form.image)
       }
 
-      await apiFetch('/api/Product', {
+      const result = await apiFetch('/api/Product', {
         method: 'POST',
         headers: { ...authHeaders() },
         body: fd,
       })
+
+      // Save the new product's ID so My Products can filter it
+      const newId = result?.id ?? result?.data?.id
+      if (newId) registerMyProduct(newId)
 
       // Refresh products list from API
       await fetchMyProducts()
