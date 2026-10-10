@@ -1,7 +1,7 @@
 // In local development we use Vite's /api proxy. This avoids browser CORS
 // problems when the backend does not allow the frontend origin.
 // For a separately hosted frontend, set VITE_API_URL to the backend origin.
-const API_URL = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+const API_URL = (import.meta.env.VITE_API_URL || "https://graduationecommerce.runasp.net").replace(/\/$/, "");
 
 // Backend base for resolving relative image paths like /images/products/...
 export const BACKEND_ORIGIN = "https://graduationecommerce.runasp.net";
