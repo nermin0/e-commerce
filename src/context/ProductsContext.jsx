@@ -3,21 +3,13 @@ import { apiFetch, authHeaders, resolveImage } from '../lib/api'
 
 const ProductsContext = createContext(null)
 
-const MY_IDS_KEY = 'myProductIds'
-
-function loadMyIds() {
-  try { return JSON.parse(localStorage.getItem(MY_IDS_KEY) || '[]') } catch { return [] }
-}
-function saveMyIds(ids) {
-  try { localStorage.setItem(MY_IDS_KEY, JSON.stringify(ids)) } catch { }
-}
-
 const norm = (p) => ({
   id: p.id,
   name: p.name ?? '',
   price: p.price ?? 0,
   category: p.category ?? '',
   description: p.description ?? '',
+  quantity: p.countOfPices ?? 0,
   image: resolveImage(p.img),
 })
 
@@ -26,54 +18,33 @@ export function ProductsProvider({ children }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  /** GET /api/Product/user — returns only the current user's products */
   const fetchMyProducts = useCallback(async () => {
     setLoading(true)
     setError('')
     try {
-      if (!localStorage.getItem('token')) { setMyProducts([]); return }
-
-      const data = await apiFetch('/api/Product', { headers: { ...authHeaders() } })
-      const all = Array.isArray(data) ? data : data?.data ?? []
-
-      // Filter by IDs the user added this session
-      const myIds = loadMyIds()
-      const mine = myIds.length > 0
-        ? all.filter(p => myIds.includes(p.id))
-        : []
-
-      setMyProducts(mine.map(norm))
+      const data = await apiFetch('/api/Product/user', {
+        headers: { ...authHeaders() },
+      })
+      const arr = Array.isArray(data) ? data : data?.data ?? []
+      setMyProducts(arr.map(norm))
     } catch (err) {
-      setError(err.message || 'Failed to load products.')
+      setError(err.message || 'Failed to load your products.')
     } finally {
       setLoading(false)
     }
   }, [])
 
-  /** Called after successful POST — saves the new ID */
-  const registerMyProduct = (id) => {
-    const ids = loadMyIds()
-    if (!ids.includes(id)) {
-      const updated = [id, ...ids]
-      saveMyIds(updated)
-    }
-  }
-
-  /** Called after successful DELETE */
-  const removeMyProduct = (id) => {
-    const ids = loadMyIds().filter(i => i !== id)
-    saveMyIds(ids)
+  const removeMyProduct = (id) =>
     setMyProducts(prev => prev.filter(p => p.id !== id))
-  }
 
-  /** Local optimistic update */
-  const updateMyProduct = (id, fields) => {
+  const updateMyProduct = (id, fields) =>
     setMyProducts(prev => prev.map(p => (p.id === id ? { ...p, ...fields } : p)))
-  }
 
   return (
     <ProductsContext.Provider value={{
       myProducts, loading, error,
-      fetchMyProducts, registerMyProduct, removeMyProduct, updateMyProduct,
+      fetchMyProducts, removeMyProduct, updateMyProduct,
     }}>
       {children}
     </ProductsContext.Provider>

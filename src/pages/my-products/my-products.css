@@ -30,7 +30,7 @@
 }
 
 .mp-title {
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 40px;
   font-weight: 400;
   color: var(--text-dark);
@@ -47,7 +47,7 @@
   background-color: var(--forest);
   color: white;
   padding: 12px 22px;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 14px;
   border-radius: 2px;
   text-decoration: none;
@@ -79,11 +79,11 @@
   font-size: 15px;
   color: var(--text-light);
   margin-bottom: 16px;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
 }
 
 .mp-empty-link {
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 14px;
   color: var(--forest);
   text-decoration: underline;
@@ -106,7 +106,7 @@
 }
 
 .mp-card:hover {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .mp-card-img-wrap {
@@ -131,7 +131,7 @@
 .mp-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,7 +149,7 @@
   align-items: center;
   gap: 6px;
   padding: 9px 16px;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 13px;
   border-radius: 2px;
   border: none;
@@ -168,9 +168,9 @@
 }
 
 .mp-del-btn {
-  background-color: rgba(255,255,255,0.15);
+  background-color: rgba(255, 255, 255, 0.15);
   color: white;
-  border: 1px solid rgba(255,255,255,0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
 }
 
 .mp-del-btn:hover {
@@ -193,7 +193,7 @@
 }
 
 .mp-card-name {
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 15px;
   color: var(--text-dark);
   font-weight: 600;
@@ -204,17 +204,24 @@
 }
 
 .mp-card-price {
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 15px;
   color: var(--forest);
   font-weight: 600;
+}
+
+.mp-card-qty {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: system-ui, sans-serif;
+  margin-top: 2px;
 }
 
 /* ── Modals (shared) ── */
 .mp-overlay-bg {
   position: fixed;
   inset: 0;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,7 +235,7 @@
   padding: 32px;
   width: 100%;
   max-width: 520px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   max-height: 90vh;
   overflow-y: auto;
 }
@@ -245,7 +252,7 @@
 }
 
 .mp-modal-title {
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 22px;
   font-weight: 400;
   color: var(--text-dark);
@@ -262,7 +269,9 @@
   transition: color 0.15s;
 }
 
-.mp-modal-close:hover { color: var(--text-dark); }
+.mp-modal-close:hover {
+  color: var(--text-dark);
+}
 
 .mp-modal-body {
   margin-bottom: 4px;
@@ -308,7 +317,7 @@
   border: 1px solid var(--border);
   color: var(--text-mid);
   padding: 10px 22px;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 14px;
   border-radius: 2px;
   cursor: pointer;
@@ -325,28 +334,32 @@
   color: white;
   border: none;
   padding: 10px 24px;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 14px;
   border-radius: 2px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.mp-modal-save:hover { background-color: var(--forest-dark); }
+.mp-modal-save:hover {
+  background-color: var(--forest-dark);
+}
 
 .mp-modal-confirm {
   background-color: var(--red);
   color: white;
   border: none;
   padding: 10px 22px;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 14px;
   border-radius: 2px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.mp-modal-confirm:hover { background-color: var(--red-light); }
+.mp-modal-confirm:hover {
+  background-color: var(--red-light);
+}
 
 .mp-delete-error {
   font-size: 13px;
@@ -374,7 +387,7 @@
   border: 1px solid var(--border);
   border-radius: 2px;
   padding: 11px 13px;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 14px;
   color: var(--text-dark);
   background: white;
@@ -382,13 +395,25 @@
   transition: border-color 0.15s;
 }
 
-.form-input:focus { border-color: var(--forest); }
-.form-input::placeholder { color: var(--text-muted); font-style: italic; }
-.input-error { border-color: var(--red-light); }
+.form-input:focus {
+  border-color: var(--forest);
+}
+.form-input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+.input-error {
+  border-color: var(--red-light);
+}
 
-.form-textarea { resize: vertical; min-height: 80px; }
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
 
-.form-select { cursor: pointer; }
+.form-select {
+  cursor: pointer;
+}
 
 .field-error {
   font-size: 12px;
@@ -398,10 +423,23 @@
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
-  .mp-container { padding: 40px 20px; }
-  .mp-header { flex-direction: column; }
-  .mp-title { font-size: 30px; }
-  .mp-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
-  .mp-edit-row { grid-template-columns: 1fr; }
-  .mp-card-overlay { opacity: 1; }
+  .mp-container {
+    padding: 40px 20px;
+  }
+  .mp-header {
+    flex-direction: column;
+  }
+  .mp-title {
+    font-size: 30px;
+  }
+  .mp-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+  .mp-edit-row {
+    grid-template-columns: 1fr;
+  }
+  .mp-card-overlay {
+    opacity: 1;
+  }
 }

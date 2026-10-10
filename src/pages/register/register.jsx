@@ -30,7 +30,8 @@ export default function Register() {
     setLoading(true)
     try {
       await register(name.trim(), email.trim(), password)
-      navigate('/')
+      // API returns no token on register — go to login
+      navigate('/login')
     } catch (err) {
       setError(err.message || 'Registration failed. Please try again.')
     } finally {
