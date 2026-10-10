@@ -51,7 +51,7 @@ export function AuthProvider({ children }) {
       body: JSON.stringify({ email, password }),
     })
 
-    const token = data?.token || data?.Token || null
+    const token = typeof data === 'string' ? data : data?.token || data?.Token || null
     if (!token) throw new Error('No token received. Check your credentials.')
 
     // Get real name from profile endpoint
