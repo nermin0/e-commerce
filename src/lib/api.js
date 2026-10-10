@@ -22,7 +22,7 @@ export const apiFetch = async (path, options = {}) => {
   } catch (error) {
     const message = error?.message || "Network request failed";
     throw new Error(
-      `Could not connect to the API. ${message}. Check that the backend is online and that the Vite API proxy is running.`,
+      `Could not connect to the API. ${message}. Check that the backend is online.`,
       { cause: error }
     );
   }
@@ -37,11 +37,17 @@ export const apiFetch = async (path, options = {}) => {
   }
 
   if (!response.ok) {
-    let message = "";
+    // If 401, clear stale token and redirect to login
+    if (response.status === 401) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userName");
+      window.location.href = "/login";
+      throw new Error("Session expired. Please log in again.");
+    }
 
+    let message = "";
     if (data && typeof data === "object") {
       message = data.message || data.title || data.error || "";
-
       if (!message && data.errors && typeof data.errors === "object") {
         message = Object.values(data.errors).flat().join(" ");
       }
